@@ -452,6 +452,25 @@ footer a:hover{color:var(--gold)}
 }
 @media (min-width:761px) and (max-width:1100px) and (orientation:portrait){.hero-trust{background:#fff}}
 .hero .hero-trust ul.wrap{padding:0}
+/* logo-diamond section accents (img/diamond.svg = the logo's diamond, redrawn at high res, logo colours) */
+.rule{display:flex;align-items:center;gap:12px;width:auto;height:22px;background:none;margin-bottom:1.3rem}
+.rule::before{content:"";width:36px;height:22px;flex:none;background:url(img/diamond.svg) center/contain no-repeat}
+.rule::after{content:"";width:52px;height:1.5px;background:var(--gold)}
+@media (max-width:760px){
+  .rule{justify-content:center;margin-inline:auto}
+  .rule::before{order:1}
+  .rule{background:linear-gradient(var(--gold),var(--gold)) calc(50% - 50px) 50%/52px 1.5px no-repeat}
+  .rule::after{order:2}
+}
+.quote-big .stars{display:none}
+.quote-big::before{content:"";display:block;width:46px;height:28px;margin:0 auto 1.1rem;background:url(img/diamond.svg) center/contain no-repeat}
+/* google badge + leave a review */
+.g-row{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:3.2rem}
+.g-row .g-badge{margin:0}
+.btn-review{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);padding:.95rem 1.5rem}
+.btn-review svg{width:18px;height:18px;color:var(--gold)}
+.btn-review:hover{background:#fff;color:var(--navy);border-color:#fff}
+@media (max-width:760px){.g-row{flex-direction:column;margin-top:2.2rem}.btn-review{width:100%;max-width:340px}}
 </style>
 </head>
 <body>
@@ -623,7 +642,7 @@ footer a:hover{color:var(--gold)}
       <div class="track rev" id="row2"></div>
     </div>
     <div class="wrap">
-      <a id="reviews-g" class="g-badge rv" href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener"><svg class="g-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span class="g-txt"><span class="g-top"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="g-sub">389 reviews on Google</span></span><span class="g-go">Read them &rarr;</span></a>
+      <div class="g-row rv"><a id="reviews-g" class="g-badge" href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener"><svg class="g-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span class="g-txt"><span class="g-top"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="g-sub">389 reviews on Google</span></span><span class="g-go">Read them &rarr;</span></a><a class="btn btn-review" href="https://search.google.com/local/writereview?placeid=ChIJHwyspMT1aIYR0QQMemXjrYU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Leave us a review</a></div>
     </div>
   </section>
 
