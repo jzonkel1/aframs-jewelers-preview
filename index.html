@@ -406,6 +406,52 @@ footer a:hover{color:var(--gold)}
   .hero .proof{justify-content:center;margin-inline:auto}
   .hero-ctas{justify-content:center}
 }
+/* bring-it-to-the-counter column: bigger type, 3 steps, CTAs (fills the sticky side while the list scrolls) */
+.svc-side h2{font-size:clamp(1.9rem,3.3vw,2.85rem)}
+.svc-side .lede{font-size:1.22rem;line-height:1.6;color:var(--text)}
+.steps{list-style:none;counter-reset:st;margin:2rem 0 2.1rem;display:grid;gap:1.15rem}
+.steps li{counter-increment:st;display:grid;grid-template-columns:2.6rem 1fr;column-gap:1rem;align-items:start}
+.steps li::before{content:counter(st);grid-row:1/3;width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-family:var(--f-head);font-size:1.05rem;line-height:1}
+.steps b{color:var(--ink);font-size:1.08rem;line-height:1.35;padding-top:.15rem}
+.steps span{color:var(--muted);font-size:.98rem;line-height:1.5}
+.side-ctas{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.3rem}
+.side-ctas svg{width:18px;height:18px}
+@media (max-width:760px){
+  .svc-side h2{font-size:1.7rem}
+  .svc-side .lede{font-size:1.06rem}
+  .steps{text-align:left;max-width:340px;margin:1.6rem auto 1.7rem}
+  .side-ctas{flex-direction:column}.side-ctas .btn{width:100%}
+}
+/* review cards on parchment */
+.rc{background-color:#f3e9d2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .16 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E"),radial-gradient(120% 90% at 50% 40%,rgba(255,250,236,.75),rgba(255,250,236,0) 60%),linear-gradient(180deg,#f6eedb,#ecdfc2);border:1px solid rgba(120,88,40,.28);box-shadow:inset 0 0 22px rgba(120,84,30,.22),0 2px 10px rgba(0,0,0,.18)}
+.rc .stars{color:#a8862f}
+.rc p{color:#3a2f1f}
+.rc cite{color:#7a6545}
+@media (max-height:820px){.svc-side{position:static}}
+/* hero trust bar */
+.hero{flex-direction:column;align-items:stretch}
+.hero > .wrap{flex:1 0 auto;display:flex;align-items:center}
+.hero-trust{position:relative;z-index:2;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(21,34,55,.1)}
+.hero-trust ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+.hero-trust li{display:flex;align-items:center;gap:.8rem;padding:1.15rem 1.2rem;border-left:1px solid rgba(21,34,55,.12)}
+.hero-trust li:first-child{border-left:0;padding-left:0}
+.hero-trust a{display:flex;align-items:center;gap:.8rem;color:inherit;text-decoration:none}
+.hero-trust svg{width:30px;height:30px;flex:none;color:var(--gold-dk)}
+.hero-trust span{display:grid;line-height:1.25}
+.hero-trust b{color:var(--navy);font-size:1rem}
+.hero-trust b i{font-style:normal;color:#fbbc04;font-size:.85rem;letter-spacing:.04em;margin-left:.2rem}
+.hero-trust small{color:#5c5048;font-size:.86rem}
+@media (max-width:1100px){.hero-trust li{padding:1rem .8rem;gap:.6rem}.hero-trust svg{width:26px;height:26px}.hero-trust b{font-size:.92rem}.hero-trust small{font-size:.8rem}}
+@media (max-width:760px){
+  .hero-trust{background:#fff;border-top:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hero-trust ul{grid-template-columns:1fr 1fr;padding:0}
+  .hero-trust li{padding:.9rem .7rem;border-left:0;border-top:1px solid var(--line);text-align:left}
+  .hero-trust li:nth-child(-n+2){border-top:0}
+  .hero-trust li:nth-child(even){border-left:1px solid var(--line)}
+  .hero-trust li:first-child{padding-left:.7rem}
+}
+@media (min-width:761px) and (max-width:1100px) and (orientation:portrait){.hero-trust{background:#fff}}
+.hero .hero-trust ul.wrap{padding:0}
 </style>
 </head>
 <body>
@@ -505,9 +551,8 @@ footer a:hover{color:var(--gold)}
     </picture>
     <div class="wrap">
       <div class="hero-copy">
-        <div class="proof"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>4.7</b><span>389 Google reviews</span><span class="dot d-only"></span><span class="d-only">Family owned since 1978</span></div>
         <h1>Integrity and<br> personal service,<br> since 1978.</h1>
-        <p class="sub">Corpus Christi's family jeweler on Airline Road. Diamonds and engagement rings, Seiko watches, repairs, appraisals, and a fair offer for your old gold.</p>
+        <p class="sub">Corpus Christi's family jeweler on Airline Road. Diamonds and engagement rings, Seiko and Citizen watches, repairs, appraisals, and a fair offer for your old gold.</p>
         <div class="hero-ctas">
           <a class="btn btn-navy" href="https://aframs.jewelershowcase.com/" target="_blank" rel="noopener">Shop engagement rings</a>
           <a class="btn btn-line desk-only" href="#quoteWizard">Get a free quote</a>
@@ -515,6 +560,14 @@ footer a:hover{color:var(--gold)}
         </div>
         <p class="or-call">Or call <a href="tel:+13619939391">(361) 993-9391</a>, Tuesday to Saturday, 10 to 6</p>
       </div>
+    </div>
+    <div class="hero-trust">
+      <ul class="wrap">
+        <li><a href="#reviews-g" class="t-google"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span><b>4.7 <i aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</i></b><small>389 Google reviews</small></span></a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m2 12l10-9l10 9h-3v8H5v-8zm10 6l.72-.66C15.3 15 17 13.46 17 11.57c0-1.54-1.21-2.75-2.75-2.75c-.87 0-1.7.41-2.25 1.05a3 3 0 0 0-2.25-1.05C8.21 8.82 7 10.03 7 11.57c0 1.89 1.7 3.43 4.28 5.77z"/></svg><span><b>Family owned</b><small>Since 1978</small></span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 12a6 6 0 0 1 6-6a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6m14 0a7.94 7.94 0 0 0-3.05-6.27L16 0H8l-.95 5.73A7.94 7.94 0 0 0 4 12c0 2.54 1.19 4.81 3.05 6.27L8 24h8l.95-5.73A7.96 7.96 0 0 0 20 12"/></svg><span><b>Seiko and Citizen</b><small>Plus other fine watch brands</small></span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.71 20.29l-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.8 3.8 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54l.53-.53l1.42-1.42l.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.8 3.8 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46l-2.83-2.83M20 2l-4 2v2l-2.17 2.17l2 2L18 8h2l2-4Z"/></svg><span><b>Jewelry and watch repair</b><small>Bring it to the counter</small></span></li>
+      </ul>
     </div>
   </section>
 
@@ -537,6 +590,12 @@ footer a:hover{color:var(--gold)}
         <span class="rule"></span>
         <h2>Bring it to the counter.</h2>
         <p class="lede">A broken chain, a loose stone, a watch that stopped, a ring that no longer fits. Bring it in and we'll take a look.</p>
+        <ol class="steps">
+          <li><b>Bring it in</b><span>Or text us a photo first, if you'd like an idea before you drive over.</span></li>
+          <li><b>We look it over with you</b><span>Right at the counter, so you know what it needs.</span></li>
+          <li><b>Pick it up on Airline Road</b><span>We'll let you know when it's ready.</span></li>
+        </ol>
+        <div class="side-ctas"><a class="btn btn-navy" href="#quoteWizard">Get a free quote</a><a class="btn btn-line" href="sms:+13619939391"><svg><use href="#i-chat"/></svg>Text a photo</a></div>
         <p class="side-call">Questions first? Call <a class="link" href="tel:+13619939391">(361) 993-9391</a></p>
       </div>
       <ul class="idx rv">
@@ -564,7 +623,7 @@ footer a:hover{color:var(--gold)}
       <div class="track rev" id="row2"></div>
     </div>
     <div class="wrap">
-      <a class="g-badge rv" href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener"><svg class="g-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span class="g-txt"><span class="g-top"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="g-sub">389 reviews on Google</span></span><span class="g-go">Read them &rarr;</span></a>
+      <a id="reviews-g" class="g-badge rv" href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener"><svg class="g-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span class="g-txt"><span class="g-top"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="g-sub">389 reviews on Google</span></span><span class="g-go">Read them &rarr;</span></a>
     </div>
   </section>
 
@@ -599,7 +658,7 @@ footer a:hover{color:var(--gold)}
       <div class="pane pane-photo pane-seiko rv" id="watches">
         <span class="pane-logo"><img src="img/seiko.png" alt="Seiko" width="600" height="192"></span>
         <h2>Try a Seiko on before you buy it.</h2>
-        <p>Skip the guesswork of buying a watch online. Come see the selection in person, and bring it back to the same counter for batteries and repairs.</p>
+        <p>Skip the guesswork of buying a watch online. Come see Seiko, Citizen and other brands in person, and bring it back to the same counter for batteries and repairs.</p>
         <a class="link" href="tel:+13619939391">Call to ask what's in stock</a>
       </div>
       <div class="pane pane-photo pane-goldphoto rv" id="gold">
