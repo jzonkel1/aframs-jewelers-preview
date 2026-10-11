@@ -1,0 +1,6 @@
+aframs-display.woff2: Roboto Serif (Commercial Type for Google, SIL Open Font License 1.1),
+static instance wdth 150 / wght 800 / opsz 36, modified for Afram's Jewelers: W/w rebuilt as two
+overlapping V's to match the logo, the apostrophe replaced with Abril Fatface's teardrop quote
+(TypeTogether, SIL OFL 1.1), digits pointed at the lining figures. Renamed "Aframs Display" per the
+OFL reserved-name terms. https://openfontlicense.org
+hanken.woff2: Hanken Grotesk (SIL Open Font License 1.1).

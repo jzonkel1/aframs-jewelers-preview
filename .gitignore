@@ -1,0 +1,6 @@
+# internal: sources, research and pitch files never go public
+img/src/
+research/
+research-notes.md
+*.pdf
+*.pptx
