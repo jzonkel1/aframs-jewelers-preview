@@ -1,4 +1,5 @@
-aframs-logo.woff2: "Aframs Logo", headline caps redrawn from Afram's Jewelers' own logo lettering
-for their website (generated as a specimen sheet from the logo, traced to outlines, crossed W built
-from two V's). Made for this site only; not a licensed retail font. Sources in research/font-sheet.
+aframs-logo.woff2 / .woff / .ttf: "Aframs Logo", headline caps redrawn from Afram's Jewelers' own logo
+lettering for their website (specimen sheet generated from the logo, traced to TrueType outlines,
+overlaps merged, autohinted; crossed W built from two V's). Three formats so old phones and tablets
+get one they can read. Made for this site only; not a licensed retail font. Sources: research/font-sheet.
 hanken.woff2: Hanken Grotesk (SIL Open Font License 1.1).
