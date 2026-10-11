@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aframs.zonkelmedia.com/img/og.jpg?v=5">
 <link rel="icon" href="img/favicon.png">
-<link rel="preload" href="fonts/aframs-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/aframs-logo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hanken.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="img/hero-1600.jpg" as="image" media="(min-width: 761px)">
 <link rel="preload" href="img/hero-m.jpg" as="image" media="(max-width: 760px)">
@@ -43,8 +43,8 @@
 }
 </script>
 <style>
-/* "Aframs Display" = Roboto Serif, width 150, weight 800 (OFL) with the logo's crossed W and teardrop apostrophe built in */
-@font-face{font-family:"Aframs Display";src:url(fonts/aframs-display.woff2) format("woff2");font-weight:800;font-style:normal;font-display:block}
+/* "Aframs Logo" = headline font redrawn from the Afram's logo lettering (research/font-sheet, logo-font-sheet skill): traced to outlines, crossed W + teardrop apostrophe */
+@font-face{font-family:"Aframs Logo";src:url(fonts/aframs-logo.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:block}
 @font-face{font-family:"Hanken Grotesk";src:url(fonts/hanken.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:block}
 :root{
   /* navy #152237 = the logo band on aframs.com; champagne #c0b283 + greys from aframs.com */
@@ -53,7 +53,7 @@
   --navy:#152237; --navy-2:#22324d; --navy-deep:#0e1828; --navy-line:rgba(255,255,255,.14);
   --gold:#c0b283; --gold-dk:#9a8a5c; --champ:#f4f0e6;
   --sweep:#d7c3b0;
-  --f-head:"Aframs Display", "Times New Roman", serif;
+  --f-head:"Aframs Logo", "Times New Roman", serif;
   --f-body:"Hanken Grotesk", system-ui, sans-serif;
   --wrap:1200px; --r:4px;
 }
@@ -127,7 +127,7 @@ h2{font-size:clamp(1.55rem,2.75vw,2.25rem)}
 .proof b{color:var(--navy);font-weight:700}
 .proof .stars{color:var(--navy)}
 .proof .dot{width:4px;height:4px;border-radius:50%;background:rgba(21,34,55,.35)}
-.hero h1{font-size:clamp(2rem,3.7vw,3.25rem);margin:1.3rem 0 1.2rem;letter-spacing:.01em}
+.hero h1{font-size:clamp(1.9rem,3.5vw,3.05rem);margin:1.3rem 0 1.2rem;letter-spacing:.01em}
 .hero p.sub{font-size:1.16rem;color:#3d342e;max-width:44ch}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
 .or-call{margin-top:1.1rem;font-size:.98rem;color:#4b3f36}
@@ -262,7 +262,7 @@ footer a:hover{color:var(--gold)}
   .hero .wrap{padding:1.2rem 0 1.8rem}
   .proof{justify-content:center;font-size:.92rem}
   .proof .d-only{display:none}
-  .hero h1{font-size:1.62rem;margin:.8rem 0 .8rem}
+  .hero h1{font-size:1.52rem;margin:.8rem 0 .8rem}
   .hero p.sub{font-size:.98rem;line-height:1.55;margin-inline:auto}
   .hero-ctas{flex-direction:column;gap:.6rem;margin-top:1.1rem}
   .hero-ctas .desk-only,.or-call{display:none}
@@ -304,13 +304,96 @@ footer a:hover{color:var(--gold)}
   .mbar .call{background:var(--navy);color:#fff}
   .mbar .text{border:1px solid var(--navy);color:var(--navy)}
 }
-/* logo-letter headings (img/glyphs-navy, built from the logo via the logo-font-sheet skill) */
-[data-glyphs]{--glyph-cap:.72}
-.hero h1[data-glyphs]{--glyph-cap:.64}
-.glyph-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.glyph-word{display:inline-block;white-space:nowrap}
-.glyph-word img{width:auto;display:inline-block;margin:0 .018em}
-.glyph-fallback{display:inline-block}
+/* quote wizard */
+.qwiz [hidden]{display:none !important}
+.qwiz .qw-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.qw-count{font-size:.85rem;color:var(--muted);white-space:nowrap}
+.qw-bar{height:4px;background:var(--line);border-radius:4px;margin:1rem 0 1.6rem;overflow:hidden}
+.qw-bar i{display:block;height:100%;width:25%;background:var(--navy);transition:width .35s}
+.qw-step{display:none}
+.qw-step.is-on{display:block;animation:qwIn .3s ease}
+@keyframes qwIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qw-q{font-weight:600;font-size:1.12rem;color:var(--ink);margin-bottom:1rem}
+.qw-q span{font-weight:400;color:var(--muted)}
+.qw-sub{color:var(--muted);font-size:.95rem;margin:-.4rem 0 1rem}
+.qw-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.qw-opt{font:inherit;font-weight:600;font-size:1rem;color:var(--navy);background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:.95rem 1rem;text-align:left;cursor:pointer;display:flex;align-items:center;gap:.7rem;transition:border-color .2s,background .2s}
+.qw-opt:hover{border-color:var(--navy)}
+.qw-opt.is-picked{background:var(--navy);border-color:var(--navy);color:#fff}
+.qw-big .qw-opt{flex-direction:column;justify-content:center;text-align:center;padding:1.2rem .8rem;gap:.55rem}
+.qw-opt svg{width:30px;height:30px;color:var(--gold-dk);flex:none}
+.qw-opt.is-picked svg{color:var(--gold)}
+.qw-wide{grid-column:1/-1}
+.qw-big .qw-wide{flex-direction:row}
+.qw-drop{display:grid;justify-items:center;gap:.3rem;padding:1.4rem 1rem;border:1.5px dashed var(--line-2);border-radius:var(--r);text-align:center;cursor:pointer;margin-bottom:1rem;transition:border-color .2s}
+.qw-drop:hover{border-color:var(--navy)}
+.qw-drop svg{width:30px;height:30px;color:var(--gold-dk)}
+.qw-drop b{color:var(--navy)}
+.qw-drop span{font-size:.88rem;color:var(--muted)}
+.qw-thumbs{display:flex;flex-wrap:wrap;gap:.5rem;margin:-.4rem 0 1rem}
+.qw-thumbs:empty{display:none}
+.qw-thumbs img{width:64px;height:64px;object-fit:cover;border-radius:var(--r)}
+.qw-err{color:#b3261e;font-size:.85rem}
+.qw-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
+.qw-foot a{color:var(--navy);font-weight:600}
+.qw-back{font:inherit;background:none;border:0;color:var(--navy);font-weight:600;cursor:pointer;padding:0}
+.qw-foot span{margin-left:auto}
+.qw-done{text-align:center;padding:1rem 0 .5rem}
+.qw-done svg{width:48px;height:48px;color:var(--gold-dk)}
+.qw-done h3{margin:.6rem 0}
+.qw-done p{color:var(--muted)}
+.qw-done .qw-demo{margin-top:1rem;font-size:.85rem;background:var(--mist);padding:.8rem;border-radius:var(--r)}
+.qwiz .alt{margin-top:.9rem}
+/* google reviews badge */
+.g-badge{margin:3.2rem auto 0;display:flex;align-items:center;gap:1rem;width:max-content;max-width:100%;background:#fff;color:var(--ink);border-radius:999px;padding:.75rem 1.4rem .75rem .9rem;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.18);transition:transform .2s}
+.g-badge:hover{transform:translateY(-2px)}
+.g-logo{width:34px;height:34px;flex:none}
+.g-txt{display:grid;line-height:1.2}
+.g-top{display:flex;align-items:center;gap:.5rem}
+.g-top b{font-size:1.35rem;color:var(--ink)}
+.g-top .stars{color:#fbbc04;letter-spacing:.05em}
+.g-sub{font-size:.88rem;color:var(--muted)}
+.g-go{margin-left:.4rem;padding-left:1rem;border-left:1px solid var(--line);font-weight:600;color:var(--navy);white-space:nowrap}
+@media (max-width:760px){.g-badge{margin-top:2.2rem;gap:.75rem;padding:.65rem 1.1rem .65rem .75rem}.g-go{display:none}.g-logo{width:30px;height:30px}}
+/* bigger service thumbnails */
+.idx a{grid-template-columns:150px 1fr 28px}
+.idx .th{width:150px;height:150px}
+.idx .th-seiko img{width:104px}
+@media (max-width:760px){.idx a{grid-template-columns:112px 1fr}.idx .th{width:112px;height:112px}.idx .th-seiko img{width:80px}}
+/* photo cards (Seiko, gold) */
+.pane-photo{position:relative;overflow:hidden;color:#fff;border:0;background:#0e1828 center/cover no-repeat;isolation:isolate}
+.pane-photo{min-height:470px;justify-content:flex-end}
+.pane-photo::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,24,40,.05) 0%,rgba(14,24,40,.18) 30%,rgba(14,24,40,.78) 62%,rgba(14,24,40,.94) 100%)}
+.pane-photo .pane-logo{position:absolute;top:1.6rem;left:1.6rem}
+.pane-photo .btn,.pane-photo .link{margin-top:.4rem}
+@media (max-width:760px){.pane-photo{min-height:430px}.pane-photo::before{background:linear-gradient(180deg,rgba(14,24,40,.08) 0%,rgba(14,24,40,.5) 26%,rgba(14,24,40,.86) 48%,rgba(14,24,40,.95) 100%)}.pane-photo .pane-logo{left:50%;transform:translateX(-50%)}}
+.pane-seiko{background-image:url(img/seiko-case.jpg);background-position:50% 40%}
+.pane-goldphoto{background-image:url(img/gold-chains.jpg);background-position:50% 50%}
+.pane-photo h2{color:#fff}
+.pane-photo p{color:rgba(255,255,255,.86)}
+.pane-photo .link{color:#fff;border-color:var(--gold)}
+.pane-logo{align-self:flex-start;background:#fff;border-radius:var(--r);padding:.55rem .8rem;line-height:0}
+.pane-photo .pane-logo img{width:104px}
+.btn-white{background:#fff;color:var(--navy);border:1px solid #fff}
+.btn-white:hover{background:var(--champ)}
+/* shop by category */
+.cats-head{display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap;margin:4.2rem 0 1.4rem}
+.cats-head h3{font-size:1.35rem}
+.cats-head span{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--navy);transition:border-color .2s,transform .2s}
+.cat:hover{border-color:var(--navy);transform:translateY(-2px)}
+.cat img{width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform .5s}
+.cat:hover img{transform:scale(1.04)}
+.cat span{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.9rem 1rem;font-weight:600;border-top:1px solid var(--line)}
+.cat i{font-style:normal;color:var(--gold-dk)}
+@media (max-width:760px){
+  .cats-head{margin-top:3rem;display:block;text-align:center}.cats-head span{display:block;margin-top:.4rem}
+  .cats{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;gap:10px;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:0 0 46%;scroll-snap-align:start}
+  .cat span{font-size:.92rem;padding:.75rem .8rem}
+}
 </style>
 </head>
 <body>
@@ -411,11 +494,11 @@ footer a:hover{color:var(--gold)}
     <div class="wrap">
       <div class="hero-copy">
         <div class="proof"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>4.7</b><span>389 Google reviews</span><span class="dot d-only"></span><span class="d-only">Family owned since 1978</span></div>
-        <h1 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">Integrity and<br> personal service,<br> since 1978.</h1>
+        <h1>Integrity and<br> personal service,<br> since 1978.</h1>
         <p class="sub">Corpus Christi's family jeweler on Airline Road. Diamonds and engagement rings, Seiko watches, repairs, appraisals, and a fair offer for your old gold.</p>
         <div class="hero-ctas">
           <a class="btn btn-navy" href="https://aframs.jewelershowcase.com/" target="_blank" rel="noopener">Shop engagement rings</a>
-          <a class="btn btn-line desk-only" href="#visit">Get a free repair quote</a>
+          <a class="btn btn-line desk-only" href="#quoteWizard">Get a free quote</a>
           <a class="btn btn-line mob-call" href="tel:+13619939391" style="display:none"><svg><use href="#i-phone"/></svg>Call the store</a>
         </div>
         <p class="or-call">Or call <a href="tel:+13619939391">(361) 993-9391</a>, Tuesday to Saturday, 10 to 6</p>
@@ -428,7 +511,7 @@ footer a:hover{color:var(--gold)}
       <figure class="rv"><img src="img/family.jpg" alt="The Afram's Jewelers family inside the store at Christmas" width="960" height="637" loading="lazy"></figure>
       <div class="rv">
         <span class="rule"></span>
-        <h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">Every customer, treated like family.</h2>
+        <h2>Every customer, treated like family.</h2>
         <p class="lede">Joseph Malak Afram opened Afram's Jewelers in 1978, and he treated every employee and every customer like family.</p>
         <p class="lede">His family carries on that legacy of integrity and personal service today. It's why people bring us the bracelet they bought fifty years ago, the ring another shop said was too old to fix, and the band they're upgrading for their thirtieth anniversary.</p>
         <div class="sig"><span class="sig-name">The Afram family</span><span>Family owned on Airline Road</span></div>
@@ -440,18 +523,18 @@ footer a:hover{color:var(--gold)}
     <div class="wrap svc">
       <div class="svc-side rv">
         <span class="rule"></span>
-        <h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">Bring it to the counter.</h2>
+        <h2>Bring it to the counter.</h2>
         <p class="lede">A broken chain, a loose stone, a watch that stopped, a ring that no longer fits. Bring it in and we'll take a look.</p>
         <p class="side-call">Questions first? Call <a class="link" href="tel:+13619939391">(361) 993-9391</a></p>
       </div>
       <ul class="idx rv">
-        <li><a href="https://aframs.jewelershowcase.com/" target="_blank" rel="noopener"><img class="th" src="img/svc-bridal.jpg" alt="Engagement rings in the case at Afram's" width="450" height="450" loading="lazy"><h3>Diamonds and engagement rings</h3><p>Engagement rings, wedding bands and anniversary upgrades, in the case and online.</p><span class="go">&rarr;</span></a></li>
+        <li><a href="https://aframs.jewelershowcase.com/" target="_blank" rel="noopener"><img class="th" src="img/svc-bridal.jpg" alt="Oval diamond engagement ring with a double halo" width="600" height="600" loading="lazy"><h3>Diamonds and engagement rings</h3><p>Engagement rings, wedding bands and anniversary upgrades, in the case and online.</p><span class="go">&rarr;</span></a></li>
         <li><a href="#visit"><img class="th" src="img/svc-repair.jpg" alt="Ring being repaired at the bench" width="450" height="450" loading="lazy"><h3>Jewelry repair</h3><p>Chains, clasps, prongs and loose stones, including the pieces another shop said couldn't be fixed.</p><span class="go">&rarr;</span></a></li>
         <li><a href="#visit"><img class="th" src="img/svc-sizing.jpg" alt="Diamond ring being polished" width="450" height="450" loading="lazy"><h3>Ring sizing and repair</h3><p>Sized up or down, worn shanks rebuilt, and heirloom rings made wearable again.</p><span class="go">&rarr;</span></a></li>
         <li><a href="#visit"><img class="th" src="img/svc-watch.jpg" alt="Watch movement being repaired" width="450" height="450" loading="lazy"><h3>Watch repair and batteries</h3><p>Batteries, bands and repairs, so the watch you love keeps time again.</p><span class="go">&rarr;</span></a></li>
         <li><a href="#visit"><img class="th" src="img/svc-appraisal.jpg" alt="Vintage cameo brooches" width="450" height="450" loading="lazy"><h3>Jewelry appraisals</h3><p>Appraisals for insurance, estates and peace of mind.</p><span class="go">&rarr;</span></a></li>
-        <li><a href="#watches"><span class="th th-seiko"><img src="img/seiko.png" alt="Seiko" width="600" height="192" loading="lazy"></span><h3>Seiko watches</h3><p>See the Seiko selection in person and try a few on before you decide.</p><span class="go">&rarr;</span></a></li>
-        <li><a href="#gold"><img class="th" src="img/svc-gold.jpg" alt="Gold pendants in a tray" width="450" height="450" loading="lazy"><h3>We buy gold</h3><p>Old chains, single earrings and broken pieces turned into a fair cash offer.</p><span class="go">&rarr;</span></a></li>
+        <li><a href="#watches"><img class="th" src="img/svc-seiko.jpg" alt="Seiko Prospex dive watch" width="600" height="600" loading="lazy"><h3>Seiko watches</h3><p>See the Seiko selection in person and try a few on before you decide.</p><span class="go">&rarr;</span></a></li>
+        <li><a href="#gold"><img class="th" src="img/svc-gold.jpg" alt="Gold cuban link chains on a display bust" width="600" height="600" loading="lazy"><h3>We buy gold</h3><p>Old chains, single earrings and broken pieces turned into a fair cash offer.</p><span class="go">&rarr;</span></a></li>
       </ul>
     </div>
   </section>
@@ -469,14 +552,14 @@ footer a:hover{color:var(--gold)}
       <div class="track rev" id="row2"></div>
     </div>
     <div class="wrap">
-      <div class="rating-line rv"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>from 389 reviews on Google</span><a href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener">Read them</a></div>
+      <a class="g-badge rv" href="https://www.google.com/maps/place/Afram's+Jewelers/@27.6991582,-97.3633394,17z/data=!4m8!3m7!1s0x8668f5c4a4ac0c1f:0x85ade3657a0c04d1!8m2!3d27.6991582!4d-97.3633394!9m1!1b1!16s%2Fg%2F1tj740m5" target="_blank" rel="noopener"><svg class="g-logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg><span class="g-txt"><span class="g-top"><b>4.7</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="g-sub">389 reviews on Google</span></span><span class="g-go">Read them &rarr;</span></a>
     </div>
   </section>
 
   <section class="cases" aria-label="In the store">
     <div class="wrap">
       <div class="cases-head rv">
-        <div><span class="rule"></span><h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">From the cases.</h2></div>
+        <div><span class="rule"></span><h2>From the cases.</h2></div>
         <a class="btn btn-line" href="https://aframs.jewelershowcase.com/" target="_blank" rel="noopener">Browse jewelry online</a>
       </div>
       <div class="cases-grid rv">
@@ -485,21 +568,32 @@ footer a:hover{color:var(--gold)}
         <img src="img/rings-hand.jpg" alt="Diamond rings worn on a hand" width="900" height="900" loading="lazy">
         <img class="wide" src="img/bridal-wide.jpg" alt="Engagement rings on cream display boxes at Afram's" width="1000" height="620" loading="lazy">
       </div>
+      <div class="cats-head rv"><h3>Shop by category</h3><span>Browse the full catalog online, then see it in person at the counter.</span></div>
+      <div class="cats rv">
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/wedding-and-engagement/engagement-rings" target="_blank" rel="noopener"><img src="img/cat-engagement.jpg" alt="Diamond engagement ring and halo band" width="640" height="640" loading="lazy"><span>Engagement rings <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/wedding-and-engagement/wedding-bands" target="_blank" rel="noopener"><img src="img/cat-bands.jpg" alt="Bridal set and gold wedding band in a ring box" width="640" height="640" loading="lazy"><span>Wedding bands <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/earrings/" target="_blank" rel="noopener"><img src="img/cat-earrings.jpg" alt="Diamond inside-outside hoop earrings" width="640" height="640" loading="lazy"><span>Earrings <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/necklaces-and-pendants/" target="_blank" rel="noopener"><img src="img/cat-necklaces.jpg" alt="Emerald halo pendant necklace" width="640" height="640" loading="lazy"><span>Necklaces and pendants <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/bracelets/" target="_blank" rel="noopener"><img src="img/cat-bracelets.jpg" alt="Marquise diamond line bracelet" width="640" height="640" loading="lazy"><span>Bracelets <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/gemstone-jewelry/" target="_blank" rel="noopener"><img src="img/cat-gemstone.jpg" alt="Blue gemstone two-stone ring in yellow gold" width="640" height="640" loading="lazy"><span>Gemstone jewelry <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/men-s-jewelry/" target="_blank" rel="noopener"><img src="img/cat-mens.jpg" alt="Men's gold signet ring with a diamond halo" width="640" height="640" loading="lazy"><span>Men's jewelry <i>&rarr;</i></span></a>
+          <a class="cat" href="https://aframs.jewelershowcase.com/browse/jewelry/chains/" target="_blank" rel="noopener"><img src="img/cat-chains.jpg" alt="Layered gold chains" width="640" height="640" loading="lazy"><span>Gold chains <i>&rarr;</i></span></a>
+      </div>
     </div>
   </section>
 
   <section class="pair">
     <div class="wrap">
-      <div class="pane rv" id="watches">
-        <img src="img/seiko.png" alt="Seiko" width="600" height="192">
-        <h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">Try a Seiko on before you buy it.</h2>
+      <div class="pane pane-photo pane-seiko rv" id="watches">
+        <span class="pane-logo"><img src="img/seiko.png" alt="Seiko" width="600" height="192"></span>
+        <h2>Try a Seiko on before you buy it.</h2>
         <p>Skip the guesswork of buying a watch online. Come see the selection in person, and bring it back to the same counter for batteries and repairs.</p>
         <a class="link" href="tel:+13619939391">Call to ask what's in stock</a>
       </div>
-      <div class="pane pane-gold rv" id="gold">
-        <h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">That drawer of old gold is worth a visit.</h2>
+      <div class="pane pane-photo pane-goldphoto rv" id="gold">
+        <h2>That drawer of old gold is worth a visit.</h2>
         <p>Broken chains, single earrings, outgrown rings. Bring them in during store hours and we'll make you an offer. No appointment needed.</p>
-        <a class="btn btn-navy" href="tel:+13619939391"><svg><use href="#i-phone"/></svg>Call (361) 993-9391</a>
+        <a class="btn btn-white" href="tel:+13619939391"><svg><use href="#i-phone"/></svg>Call (361) 993-9391</a>
       </div>
     </div>
   </section>
@@ -508,7 +602,7 @@ footer a:hover{color:var(--gold)}
     <div class="wrap">
       <div class="rv">
         <span class="rule"></span>
-        <h2 data-glyphs="aframs-navy" data-glyph-path="img/glyphs-navy/">Visit us on Airline Road.</h2>
+        <h2>Visit us on Airline Road.</h2>
         <img class="store" src="img/store-wide.jpg" alt="Afram's Jewelers storefront on Airline Road in Corpus Christi" width="1200" height="675" loading="lazy">
         <dl class="rows">
           <div class="row"><dt>Address</dt><dd>1701 Airline Rd, Corpus Christi, TX 78412</dd></div>
@@ -518,20 +612,54 @@ footer a:hover{color:var(--gold)}
         </dl>
         <div class="map"><iframe title="Map to Afram's Jewelers" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7065.164475312436!2d-97.363491!3d27.699304!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8668f5c4a4ac0c1f%3A0x85ade3657a0c04d1!2sAfram%27s%20Jewelers!5e0!3m2!1sen!2sus!4v1649796014860!5m2!1sen!2sus"></iframe></div>
       </div>
-      <form class="form rv" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Thank you. We\'ll call you shortly.'">
-        <h3>Get a free repair quote</h3>
-        <p class="small">Tell us what needs fixing and we'll call you back to talk it through.</p>
-        <div class="row2">
-          <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="name" required></div>
-          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      <form class="form qwiz rv" id="quoteWizard" name="quote" novalidate>
+        <input type="hidden" name="form-name" value="quote"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+        <input type="hidden" name="item"><input type="hidden" name="need">
+        <div class="qw-top"><h3>Get a free quote</h3><span class="qw-count">Step <b>1</b> of 4</span></div>
+        <div class="qw-bar"><i></i></div>
+
+        <div class="qw-step is-on" data-step="1">
+          <p class="qw-q">What can we help you with?</p>
+          <div class="qw-opts qw-big">
+            <button type="button" class="qw-opt" data-field="item" data-value="Ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 10L8 4.4L9.6 2h4.8L16 4.4zm3.5-3.2l-1.2 1.7c2.2.9 3.7 3 3.7 5.5a6 6 0 0 1-6 6a6 6 0 0 1-6-6c0-2.5 1.5-4.6 3.7-5.5L8.5 6.8C5.8 8.1 4 10.8 4 14a8 8 0 0 0 8 8a8 8 0 0 0 8-8c0-3.2-1.8-5.9-4.5-7.2"/></svg>Ring</button>
+            <button type="button" class="qw-opt" data-field="item" data-value="Watch"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 12a6 6 0 0 1 6-6a6 6 0 0 1 6 6a6 6 0 0 1-6 6a6 6 0 0 1-6-6m14 0a7.94 7.94 0 0 0-3.05-6.27L16 0H8l-.95 5.73A7.94 7.94 0 0 0 4 12c0 2.54 1.19 4.81 3.05 6.27L8 24h8l.95-5.73A7.96 7.96 0 0 0 20 12"/></svg>Watch</button>
+            <button type="button" class="qw-opt" data-field="item" data-value="Appraisal"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3v3l2-1l2 1v-3h3a2 2 0 0 0 2-2V7m-5 8v2l-2-1l-2 1v-2l-2-1l2-1v-2l2 1l2-1v2l2 1m-3-6V3.5L17.5 8Z"/></svg>Appraisal</button>
+            <button type="button" class="qw-opt" data-field="item" data-value="Selling gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m1 22l1.5-5h7l1.5 5zm12 0l1.5-5h7l1.5 5zm-7-7l1.5-5h7l1.5 5zm17-8.95l-3.86 1.09L18.05 11l-1.09-3.86l-3.86-1.09l3.86-1.09l1.09-3.86l1.09 3.86z"/></svg>Selling gold</button>
+            <button type="button" class="qw-opt qw-wide" data-field="item" data-value="Something else"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m0 8.5a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-5.5 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m11 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3"/></svg>Something else</button>
+          </div>
         </div>
-        <div class="field"><label for="f-type">What is it?</label>
-          <select id="f-type"><option>Ring</option><option>Necklace or chain</option><option>Bracelet</option><option>Earrings</option><option>Watch</option><option>Appraisal</option><option>Selling gold</option><option>Something else</option></select>
+
+        <div class="qw-step" data-step="2">
+          <p class="qw-q" data-q></p>
+          <div class="qw-opts" data-opts></div>
+          <div class="field qw-else" hidden><label for="qw-what">Tell us about it</label><textarea id="qw-what" name="details" placeholder="Example: my grandmother's necklace has a broken clasp"></textarea></div>
+          <button type="button" class="btn btn-navy qw-next qw-else" hidden>Next</button>
         </div>
-        <div class="field"><label for="f-msg">What's going on with it?</label><textarea id="f-msg" placeholder="Example: the clasp on my gold chain broke"></textarea></div>
-        <label class="upload"><svg><use href="#i-cam"/></svg><span>Add a photo (optional)</span><input type="file" accept="image/*" hidden></label>
-        <button class="btn btn-navy" type="submit">Get my free quote</button>
-        <p class="alt">Rather text a photo? <a href="sms:+13619939391">Text (361) 993-9391</a></p>
+
+        <div class="qw-step" data-step="3">
+          <p class="qw-q">Where should we call you back?</p>
+          <div class="field"><label for="qw-name">Your name</label><input id="qw-name" name="name" autocomplete="name"></div>
+          <div class="field"><label for="qw-phone">Phone</label><input id="qw-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(361) 555-0123"><small class="qw-err" hidden>Please enter a 10-digit phone number.</small></div>
+          <button type="button" class="btn btn-navy qw-next">Next</button>
+        </div>
+
+        <div class="qw-step" data-step="4">
+          <p class="qw-q">Add a photo <span>(optional)</span></p>
+          <p class="qw-sub">A quick phone picture helps us give you a better quote. Feel free to text it over if that's easier.</p>
+          <label class="qw-drop"><svg aria-hidden="true"><use href="#i-cam"/></svg><b>Add photos</b><span>Take a picture or choose from your phone</span><input type="file" name="photos" accept="image/*" multiple hidden></label>
+          <div class="qw-thumbs"></div>
+          <button type="submit" class="btn btn-navy">Get my free quote</button>
+          <p class="alt">Rather text it? <a href="sms:+13619939391">Text a photo to (361) 993-9391</a></p>
+        </div>
+
+        <div class="qw-done" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m-1.4 14.2 6.3-6.3-1.4-1.4-4.9 4.9-2.2-2.2-1.4 1.4z"/></svg>
+          <h3>Thank you, <span data-name>we've got it</span>.</h3>
+          <p>We'll call you back during store hours, Tuesday to Saturday, 10 to 6.</p>
+          <p class="qw-demo">This is a demo, so nothing was sent. On your real site this goes straight to your inbox. Questions about the site? Call or text Zonkel Media at <a href="tel:+13616582912">361-658-2912</a>.</p>
+        </div>
+
+        <div class="qw-foot"><button type="button" class="qw-back" hidden>&larr; Back</button><span>Or call <a href="tel:+13619939391">(361) 993-9391</a></span></div>
       </form>
     </div>
   </section>
@@ -578,7 +706,36 @@ footer a:hover{color:var(--gold)}
   [['row1',a],['row2',c]].forEach(function(p){var el=document.getElementById(p[0]),h=p[1].map(card).join('');el.innerHTML=h+h;el.querySelectorAll('figure').forEach(function(f,i){if(i>=p[1].length)f.setAttribute('aria-hidden','true')})});
 })();
 </script>
-<script src="img/glyphs-navy/glyphs.js"></script>
-<script src="js/glyph-headings.js"></script>
+<script>
+(function(){
+  var f=document.getElementById('quoteWizard'); if(!f) return;
+  var steps=f.querySelectorAll('.qw-step'), bar=f.querySelector('.qw-bar i'), cnt=f.querySelector('.qw-count b'), back=f.querySelector('.qw-back'), cur=1;
+  var NEXT={
+    'Ring':['What does the ring need?',['Sizing','Repair or rebuild','Loose or missing stone','Not sure']],
+    'Watch':['What does the watch need?',['New battery','Band or bracelet','Repair','Not sure']],
+    'Appraisal':['What is the appraisal for?',['Insurance','Estate or inheritance','Just curious what it is worth']],
+    'Selling gold':['What are you looking to sell?',['Chains and jewelry','Broken or single pieces','Coins','A little of everything']]
+  };
+  function go(n){cur=n;steps.forEach(function(s){s.classList.toggle('is-on',+s.dataset.step===n)});bar.style.width=(n*25)+'%';cnt.textContent=n;back.hidden=n===1;
+    if(n>1&&window.innerWidth<761){f.scrollIntoView({behavior:'smooth',block:'start'})}}
+  function pick(btn){var fld=btn.dataset.field;f.querySelectorAll('.qw-opt[data-field="'+fld+'"]').forEach(function(b){b.classList.toggle('is-picked',b===btn)});f.elements[fld].value=btn.dataset.value}
+  function buildStep2(item){var s=f.querySelector('[data-step="2"]'),q=s.querySelector('[data-q]'),o=s.querySelector('[data-opts]'),els=s.querySelectorAll('.qw-else');o.innerHTML='';f.elements.need.value='';
+    if(NEXT[item]){q.textContent=NEXT[item][0];NEXT[item][1].forEach(function(v,i,a){var b=document.createElement('button');b.type='button';b.className='qw-opt'+(a.length%2&&i===a.length-1?' qw-wide':'');b.dataset.field='need';b.dataset.value=v;b.textContent=v;o.appendChild(b)});o.hidden=false;els.forEach(function(e){e.hidden=true})}
+    else{q.textContent='What can we help with?';o.hidden=true;els.forEach(function(e){e.hidden=false})}}
+  f.addEventListener('click',function(e){
+    var b=e.target.closest('.qw-opt');
+    if(b){pick(b);if(b.dataset.field==='item'){buildStep2(b.dataset.value)}setTimeout(function(){go(cur+1)},230);return}
+    if(e.target.closest('.qw-back')){go(cur-1);return}
+    if(e.target.closest('.qw-next')){
+      if(cur===3){var ph=f.elements.phone.value.replace(/\D/g,'').replace(/^1(?=\d{10}$)/,''),err=f.querySelector('.qw-err');err.hidden=ph.length===10;if(ph.length!==10){f.elements.phone.focus();return}}
+      go(cur+1)}
+  });
+  f.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'){e.preventDefault();var n=f.querySelector('.qw-step.is-on .qw-next');if(n)n.click()}});
+  var file=f.querySelector('input[type=file]'),th=f.querySelector('.qw-thumbs');
+  file.addEventListener('change',function(){th.innerHTML='';[].slice.call(file.files,0,6).forEach(function(x){var i=document.createElement('img');i.src=URL.createObjectURL(x);i.alt='';th.appendChild(i)});f.querySelector('.qw-drop b').textContent=file.files.length?file.files.length+' photo'+(file.files.length>1?'s':'')+' added':'Add photos'});
+  f.addEventListener('submit',function(e){e.preventDefault();var nm=f.elements.name.value.trim().split(' ')[0];if(nm)f.querySelector('[data-name]').textContent=nm;
+    steps.forEach(function(s){s.classList.remove('is-on')});f.querySelector('.qw-top').hidden=true;f.querySelector('.qw-bar').hidden=true;back.hidden=true;f.querySelector('.qw-done').hidden=false});
+})();
+</script>
 </body>
 </html>
